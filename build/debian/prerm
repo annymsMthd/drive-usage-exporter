@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo systemctl stop drive-usage-exporter
+sudo systemctl disable drive-usage-exporter
+sudo systemctl daemon-reload

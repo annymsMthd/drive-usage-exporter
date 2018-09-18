@@ -1,0 +1,10 @@
+[Unit]
+Description=drive-usage-exporter
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/drive-usage-exporter
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

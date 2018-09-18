@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo systemctl enable drive-usage-exporter.service
+sudo systemctl start drive-usage-exporter.service
+sudo systemctl daemon-reload

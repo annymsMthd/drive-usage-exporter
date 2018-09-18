@@ -1,0 +1,21 @@
+language: go
+go:
+- 1.11.x
+go_import_path: github.com/annymsMthd/drive-usage-exporter
+sudo: true
+
+script:
+- sudo apt-get --yes install snapd
+- sudo snap install gogitver
+- env GO111MODULE=on PATH=$PATH:/snap/bin make package
+
+deploy:
+  provider: releases
+  api_key:
+    secure: RNJ8C4E8lAVSDAdgR+lOSaAS8ZFKKXTuQQl6MOgmfO+2YlL+tU9vGs3pDdK7XWLMxvYerEAAgJtfZfOb4U1i++ZHeixiljG2bcfNc+Q2HbYjc99jZuTqejaZc02yjJ82D2VonXIrQSxn5DqJ1St98LKNor2hrneLBbi7yBPc/2vCCtiqnhA+KKY7MPw0vntzfjpKG4U/Jjsf+3S5AbUY7aR7guAmpnIEOrr//9fGDDEjLu8z9Dq/s4ltgEg7V4+BA2q/Os9pS2D4izPsW0KdK7AxIrxlRfuYpqEEAKv28sZYUgeTBL4Bq+inSCUd7KtW4n/ZDteG/XO3ryARwzJ/88TveDE8iP5MbPOUUzRVwXfIyR8alvzK3xcQXfYxOZ/srHPjzhP13Cd9X/XDKyv6qqTfKEIBR1TqWVXD6caeZCfrTJDw3NGv5paysbbtNVW4YwIDB90YRd7BD9Em0i0ZYszwPTLGC4ZW4yTAtY3aiAzWrN6LVrLZPLxN7+HqO5/b3GqV0DKTPmvAgvQNTBz7xLH2SIT0RXRdv96EFKS9Ae2tpQuPHajzx4PaoO9CYDsp6V5Q7VuGWjV6Q+P765+VWGfiAcFXioRLQG0DMTLkKBFiW1gBrKQt2AKDkRcgEErOlVEyq8DaHZOeyxpFrhnvpK7H+EtOl5rSc4hVvFG84lE=
+  file_glob: true
+  skip_cleanup: true
+  file: artifacts/*
+  on:
+    repo: annymsMthd/drive-usage-exporter
+    tags: true

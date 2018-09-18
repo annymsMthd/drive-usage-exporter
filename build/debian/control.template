@@ -1,0 +1,6 @@
+Package: drive-usage-exporter
+Version: ${VERSION}
+Maintainer: Joshua Benjamin <joshuabnjmn@gmail.com>
+Architecture: amd64
+Description: drive-usage-exporter exports drive usage for prometheus
+Build-Depends: dh-systemd
