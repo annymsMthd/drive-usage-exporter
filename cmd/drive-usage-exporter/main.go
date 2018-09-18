@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 	"time"
@@ -49,10 +50,15 @@ func updateStats() {
 
 			err = usage.Get(d)
 			if err != nil {
-				panic(err)
+				fmt.Printf("error with file: %s, %v", d, err)
+				continue
 			}
 
 			if !strings.HasPrefix(fs.DevName, "/dev/sd") && !strings.HasPrefix(fs.DevName, "/dev/mapper") {
+				continue
+			}
+
+			if strings.HasPrefix(d, "/var/lib/") {
 				continue
 			}
 
